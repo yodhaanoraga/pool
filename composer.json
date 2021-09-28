@@ -1,6 +1,6 @@
 {
-    "name": "arionum/pool",
-    "description": "A proof of concept pool for Arionum.",
+    "name": "gaman/pool",
+    "description": "A miner pool for Gaman Blockchain.",
     "license": "MIT",
     "require": {
         "php": "^7.2",
