@@ -16,7 +16,7 @@ $tpl->assign("q", $q);
 $tpl->draw('header');
 
 if ($q == "") {
-    $current = $aro->row("SELECT * FROM blocks ORDER by height DESC LIMIT 1");
+    $current = $gan->row("SELECT * FROM blocks ORDER by height DESC LIMIT 1");
     $last_won = $db->single("SELECT height FROM blocks ORDER by height DESC LIMIT 1");
 
     $total_shares = 0;
