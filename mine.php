@@ -126,11 +126,11 @@ if ($q == "info") {
         $res = file_get_contents($pool_config['node_url']."/mine.php?q=submitNonce", false, $context);
         $data = json_decode($res, true);
         if ($data['status'] == "ok") {
-            $bl = $aro->row("SELECT * FROM blocks ORDER by height DESC LIMIT 1");
+            $bl = $gan->row("SELECT * FROM blocks ORDER by height DESC LIMIT 1");
             $added = $db->single("SELECT COUNT(1) FROM blocks WHERE id=:id", [":id" => $bl['id']]);
 
             if ($bl['generator'] == $pool_config['address'] && $added == 0) {
-                $reward = $aro->single(
+                $reward = $gan->single(
                     "SELECT val FROM transactions WHERE block=:bl AND version=0",
                     [":bl" => $bl['id']]
                 );
