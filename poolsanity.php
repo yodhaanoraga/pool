@@ -39,7 +39,7 @@ $current = 0;
 $ticks = 0;
 while (1) {
     $ticks++;
-    $ck = $aro->single("SELECT height FROM blocks ORDER by height DESC LIMIT 1");
+    $ck = $gan->single("SELECT height FROM blocks ORDER by height DESC LIMIT 1");
     if ($ck != $current && $ck) {
         $current = $ck;
         $db->run("UPDATE miners SET historic=historic*0.95+shares, shares=0,bestdl=1000000");
@@ -82,7 +82,7 @@ while (1) {
         "argon_threads" => $g['data']['argon_threads'], 
         "argon_time"    => $g['data']['argon_time'],
     ];
-    $fin = json_encode(["status" => "ok", "data" => $res, "coin" => "arionum"]);
+    $fin = json_encode(["status" => "ok", "data" => $res, "coin" => "gan"]);
     echo "\n$fin\n";
     file_put_contents($cache_file, $fin);
 
