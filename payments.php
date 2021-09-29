@@ -41,7 +41,7 @@ function pay_post($url, $data = [])
     $postdata = http_build_query(
         [
             'data' => json_encode($data),
-            "coin" => " arionum",
+            "coin" => " gan",
         ]
     );
 
@@ -72,7 +72,7 @@ if ($hour == 10 && $min < 20) {
 }
 
 echo "\n----------------------------------------------------------------------------------\n";
-$current = $aro->single("SELECT height FROM blocks ORDER by height DESC LIMIT 1");
+$current = $gan->single("SELECT height FROM blocks ORDER by height DESC LIMIT 1");
 echo "Current block $current\n";
 
 
@@ -99,7 +99,7 @@ $db->run("DELETE FROM workers WHERE updated<UNIX_TIMESTAMP()-3600");
 // check for orphan blocks
 foreach ($r as $x) {
     echo "Checking $x[block]\n";
-    $s = $aro->single("SELECT COUNT(1) FROM blocks WHERE id=:id", [":id" => $x['block']]);
+    $s = $gan->single("SELECT COUNT(1) FROM blocks WHERE id=:id", [":id" => $x['block']]);
     if ($s == 0) {
         $db->run("DELETE FROM blocks WHERE id=:id", [":id" => $x['block']]);
         $db->run("DELETE FROM payments WHERE block=:id", [":id" => $x['block']]);
