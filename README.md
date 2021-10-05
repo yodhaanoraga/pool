@@ -14,6 +14,7 @@ The requirements are the same as for the Gaman node:
 - php-openssl
 - php-gmp
 - php-bcmath
+- composer
 
 ## Usage
 
@@ -21,7 +22,8 @@ The requirements are the same as for the Gaman node:
 2. Edit the `config.php` and follow the instructions inside.
 3. Import the `contrib/pool.sql` to your NEW mysql database.
 4. Chmod the cache directory using `chmod 777 cache -R`.
-5. Create a cron entry using the following format:
+5. Run composer install or composer update. If any problems with required dependency, please try to run sudo composer install --ignore-platform-reqs or sudo composer update --ignore-platform-reqs
+6. Create a cron entry using the following format:
    ```bash
    */10 * * * * user php /path/to/pool/payments.php
    ```
